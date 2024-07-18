@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+</head>
+<body style="background-color: black; color: tomato;">
+     <h1>CaseStudy for Dom, which was done behind the scenes in console</h1>
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    const  addLanguage = (langName)=> {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li)
+
+    }
+
+    // A little different, Optimized and good way off above good
+    const optiAddLang = (langName)=> {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python");
+    addLanguage("Ruby")
+    optiAddLang("TypeScript")
+
+    // Now Editing Child
+    const secLanguage = (langName)=> {
+        const langTwo = document.querySelector('li:nth-child(2)');
+        const newLi = document.createElement('li');
+        newLi.appendChild(document.createTextNode(`${langName}`));
+        langTwo.replaceWith(newLi);
+    }
+    secLanguage("Replaced")
+
+    // Removing some elements
+    const removeLang = (langName)=> {
+        const lastLang = document.querySelector('li:last-child');
+        lastLang.remove();
+    }
+    removeLang();
+ </script>
+</html>
